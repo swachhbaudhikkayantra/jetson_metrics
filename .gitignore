@@ -1,6 +1,4 @@
-﻿# separate repo (own .git, cloned from sanjana-srinivas/sby-deploy)
-sby-deploy/
-# exceeds GitHub's 100 MB file limit
+﻿# exceeds GitHub's 100 MB file limit
 Models-20261026T053144Z-1-001/Models/Rfdetr/Copy of rfdetr_fp32.onnx
 __pycache__/
 
@@ -9,3 +7,6 @@ Models-20261026T053144Z-1-001/
 *.onnx
 *.pt
 *.engine
+
+sby-deploy/.git/
+sby-deploy/.git_disabled/
