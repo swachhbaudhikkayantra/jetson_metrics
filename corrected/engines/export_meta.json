@@ -1,0 +1,13 @@
+[
+  {
+    "model_type": "rfdetr",
+    "name": "rfdetr",
+    "source": "engines/rfdetr_slim.onnx",
+    "onnx": "engines/rfdetr.onnx",
+    "onnx_mb": 114.26162147521973,
+    "kind": "rfdetr",
+    "engine_fp16": "engines/rfdetr_fp16.engine",
+    "engine_fp16_mb": 60.48112869262695,
+    "build_time_fp16": 149.01987600326538
+  }
+]

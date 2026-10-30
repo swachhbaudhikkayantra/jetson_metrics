@@ -1,0 +1,49 @@
+model,precision_mode,class,precision,recall,f1,AP@0.5,AP@0.5:0.95,tp,fp,fn,note
+YOLOv8n,FP16,aluminium_foil,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv8n,FP16,bottle,0.964,0.964,0.964,0.96,0.759,27,1,1,
+YOLOv8n,FP16,cement_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv8n,FP16,floor,0.773,0.785,0.779,0.77,0.433,51,15,14,
+YOLOv8n,FP16,obstacle,0.645,0.712,0.677,0.683,0.507,156,86,63,
+YOLOv8n,FP16,paper,0.847,0.871,0.859,0.878,0.715,61,11,9,
+YOLOv8n,FP16,wooden_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv8n,FP16,wrapper,0.912,0.886,0.899,0.882,0.719,31,3,4,
+YOLOv8n,INT8,aluminium_foil,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv8n,INT8,bottle,1.0,0.964,0.982,0.974,0.722,27,0,1,
+YOLOv8n,INT8,cement_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv8n,INT8,floor,0.803,0.815,0.809,0.837,0.458,53,13,12,
+YOLOv8n,INT8,obstacle,0.735,0.685,0.709,0.667,0.468,150,54,69,
+YOLOv8n,INT8,paper,0.836,0.871,0.853,0.872,0.7,61,12,9,
+YOLOv8n,INT8,wooden_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv8n,INT8,wrapper,0.879,0.829,0.853,0.878,0.706,29,4,6,
+YOLOv11n-seg (box head),FP16,aluminium_foil,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv11n-seg (box head),FP16,bottle,0.933,1.0,0.966,1.0,0.737,28,2,0,
+YOLOv11n-seg (box head),FP16,cement_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv11n-seg (box head),FP16,floor,0.887,0.846,0.866,0.853,0.712,55,7,10,
+YOLOv11n-seg (box head),FP16,obstacle,0.601,0.735,0.661,0.668,0.52,161,107,58,
+YOLOv11n-seg (box head),FP16,paper,0.908,0.843,0.874,0.849,0.708,59,6,11,
+YOLOv11n-seg (box head),FP16,wooden_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+YOLOv11n-seg (box head),FP16,wrapper,0.941,0.914,0.928,0.912,0.735,32,2,3,
+"YOLO26n (COCO, reference)",FP16,aluminium_foil,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class; also no labelled images
+"YOLO26n (COCO, reference)",FP16,bottle,0.909,0.357,0.513,0.487,0.363,10,1,18,
+"YOLO26n (COCO, reference)",FP16,cement_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class; also no labelled images
+"YOLO26n (COCO, reference)",FP16,floor,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",FP16,obstacle,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",FP16,paper,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",FP16,wooden_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class; also no labelled images
+"YOLO26n (COCO, reference)",FP16,wrapper,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",INT8,aluminium_foil,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class; also no labelled images
+"YOLO26n (COCO, reference)",INT8,bottle,1.0,0.357,0.526,0.48,0.303,10,0,18,
+"YOLO26n (COCO, reference)",INT8,cement_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class; also no labelled images
+"YOLO26n (COCO, reference)",INT8,floor,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",INT8,obstacle,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",INT8,paper,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+"YOLO26n (COCO, reference)",INT8,wooden_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class; also no labelled images
+"YOLO26n (COCO, reference)",INT8,wrapper,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,COCO model cannot predict this class
+RF-DETR Medium,FP16,aluminium_foil,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+RF-DETR Medium,FP16,bottle,1.0,1.0,1.0,1.0,0.873,28,0,0,
+RF-DETR Medium,FP16,cement_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+RF-DETR Medium,FP16,floor,0.934,0.877,0.905,0.902,0.846,57,4,8,
+RF-DETR Medium,FP16,obstacle,0.769,0.881,0.821,0.88,0.764,193,58,26,
+RF-DETR Medium,FP16,paper,0.855,0.929,0.89,0.92,0.827,65,11,5,
+RF-DETR Medium,FP16,wooden_dust,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,no labelled images in the dataset
+RF-DETR Medium,FP16,wrapper,0.875,1.0,0.933,0.989,0.863,35,5,0,

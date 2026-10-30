@@ -1,0 +1,33 @@
+[
+  {
+    "model_type": "yolov8",
+    "source": "engines/best.onnx",
+    "name": "best",
+    "onnx": "engines/best.onnx",
+    "onnx_mb": 11.702337265014648,
+    "kind": "yolo",
+    "engine_fp16": "engines/best_fp16.engine",
+    "engine_fp16_mb": 8.690876007080078,
+    "build_time_fp16": 359.07446336746216
+  },
+  {
+    "model_type": "yolo26",
+    "source": "engines/yolo26n.onnx",
+    "name": "yolo26n",
+    "onnx": "engines/yolo26n.onnx",
+    "onnx_mb": 9.470276832580566,
+    "kind": "yolo",
+    "engine_fp16": "engines/yolo26n_fp16.engine",
+    "engine_fp16_mb": 8.08200454711914,
+    "build_time_fp16": 385.28122878074646
+  },
+  {
+    "model_type": "rfdetr",
+    "name": "rfdetr",
+    "source": "../Models/Rfdetr/Copy of rfdetr_fp32.onnx",
+    "onnx": "engines/rfdetr.onnx",
+    "onnx_mb": 114.29161548614502,
+    "kind": "rfdetr",
+    "error_fp16": "ONNX parse failed for engines/rfdetr.onnx:\nIn node 1297 with name: /transformer/decoder/layers.0/cross_attn/Slice_2 and operator: Slice (parseNode): INVALID_NODE: Invalid Node - /transformer/decoder/layers.0/cross_attn/Slice_2\nITensor::getDimensions: Error Code 4: Internal Error (/transformer/ScatterND: an IScatterLayer cannot be used to compute a shape tensor)"
+  }
+]

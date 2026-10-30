@@ -10,3 +10,17 @@ Models-20261026T053144Z-1-001/
 
 sby-deploy/.git/
 sby-deploy/.git_disabled/
+
+# --- never publish (repo is public) ---
+rp.txt
+
+# --- datasets (Roboflow exports, large, not ours to redistribute here) and calibration symlinks ---
+dataset/
+dataset_v2/
+dataset_v3/
+calib/
+
+# --- big generated artefacts ---
+corrected/engines/*.onnx
+corrected/engines/*.engine
+corrected/results_paper_metrics_raw.json

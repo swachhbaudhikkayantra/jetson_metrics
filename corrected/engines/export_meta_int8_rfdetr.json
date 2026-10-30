@@ -1,0 +1,10 @@
+[
+  {
+    "name": "rfdetr",
+    "source": "/home/spherenex/jetson_metrics/corrected/engines/rfdetr_slim.onnx",
+    "onnx": "/home/spherenex/jetson_metrics/corrected/engines/rfdetr_slim.onnx",
+    "onnx_mb": 114.26162147521973,
+    "kind": "rfdetr",
+    "error_int8": "TensorRT engine build failed (see log above)"
+  }
+]

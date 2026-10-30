@@ -1,0 +1,12 @@
+[
+  {
+    "name": "best",
+    "source": "/home/spherenex/jetson_metrics/corrected/engines/best.onnx",
+    "onnx": "/home/spherenex/jetson_metrics/corrected/engines/best.onnx",
+    "onnx_mb": 11.702337265014648,
+    "kind": "yolo",
+    "engine_int8": "/home/spherenex/jetson_metrics/corrected/engines/best_int8.engine",
+    "engine_int8_mb": 4.599300384521484,
+    "build_time_int8": 773.7313373088837
+  }
+]

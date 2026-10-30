@@ -1,0 +1,22 @@
+
+============================================================
+ RF-DETR: engines/rfdetr_slim.onnx
+============================================================
+    [WARN] --rfdetr-names not given: RF-DETR detections will show raw class indices and its accuracy cannot be scored. The ONNX has 10 logits per query; supply a list of 10 names indexed by output index (including the unused/dummy slot).
+
+  [rfdetr] FP16 -> engines/rfdetr_fp16.engine
+    building FP16 engine (input (1, 3, 448, 448)) — can take several minutes...
+      IN  input: (1, 3, 448, 448) DataType.FLOAT
+      OUT dets: (1, 300, 4) DataType.FLOAT
+      OUT labels: (1, 300, 10) DataType.FLOAT
+    done in 149s (60.5 MB)
+
+============================================================
+ Export Summary
+============================================================
+
+  rfdetr (rfdetr)
+    fp16 :    60.5 MB  build=149s  [engines/rfdetr_fp16.engine]
+
+  Metadata saved: engines/export_meta.json
+exit=0

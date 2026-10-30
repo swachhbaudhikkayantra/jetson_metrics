@@ -144,6 +144,10 @@ def make_calibrator(trt, kind, images, input_shape, cache_file):
 def build_engine(onnx_path, engine_path, precision, kind, workspace_mb=2048,
                  calib_dir=None, calib_count=100):
     import tensorrt as trt
+    if precision == "int8":
+        # the calibrator uses pycuda; its CUDA context must exist BEFORE the builder is created,
+        # otherwise TensorRT warns "CUDA context changed" and every tactic fails
+        import pycuda.autoinit  # noqa: F401
 
     info = check_onnx(onnx_path)
     if info:

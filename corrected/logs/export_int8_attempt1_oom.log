@@ -1,0 +1,27 @@
+
+============================================================
+ INT8: best (yolo)
+============================================================
+
+  [best] INT8 -> /home/spherenex/jetson_metrics/corrected/engines/best_int8.engine
+    building INT8 engine (input (1, 3, 640, 640)) — can take several minutes...
+[10/30/2026-20:41:03] [TRT] [W] The CUDA context changed between createInferBuilder and buildSerializedNetwork. A Builder holds CUDA resources which cannot be shared across CUDA contexts, so access these in different CUDA context results in undefined behavior. If using pycuda, try import pycuda.autoinit before importing tensorrt.
+[10/30/2026-20:41:07] [TRT] [E] Error Code: 9: Skipping tactic 0x9d9fdb5fd9945f64 due to exception Cask convolution execution
+[10/30/2026-20:41:07] [TRT] [E] Error Code: 9: Skipping tactic 0x40a12e3938221818 due to exception Cask convolution execution
+[10/30/2026-20:41:07] [TRT] [E] Error Code: 9: Skipping tactic 0xe38e9dfd56c33779 due to exception Cask convolution execution
+[10/30/2026-20:41:07] [TRT] [E] Error Code: 9: Skipping tactic 0x0190806602534cfd due to exception Cask convolution execution
+[10/30/2026-20:41:07] [TRT] [E] Error Code: 9: Skipping tactic 0xe38e9dfd56c33779 due to exception Cask convolution execution
+[10/30/2026-20:41:07] [TRT] [E] Error Code: 9: Skipping tactic 0x0190806602534cfd due to exception Cask convolution execution
+[10/30/2026-20:41:08] [TRT] [E] Error Code: 9: Skipping tactic 0xa31d27de74b895ff due to exception Cask convolution execution
+[10/30/2026-20:41:08] [TRT] [E] Error Code: 9: Skipping tactic 0x828d0ea88c66fce7 due to exception Cask convolution execution
+[10/30/2026-20:41:08] [TRT] [E] Error Code: 9: Skipping tactic 0xa9366041633a5135 due to exception Cask convolution execution
+[10/30/2026-20:41:08] [TRT] [E] Error Code: 9: Skipping tactic 0x865894c4635db7fd due to exception Cask convolution execution
+[10/30/2026-20:41:08] [TRT] [E] IBuilder::buildSerializedNetwork: Error Code 10: Internal Error (Could not find any implementation for node /model.4/cv1/conv/Conv.)
+    [ERROR] int8 build failed: TensorRT engine build failed (see log above)
+
+============================================================
+ INT8: yolo26n (yolo)
+============================================================
+
+  [yolo26n] INT8 -> /home/spherenex/jetson_metrics/corrected/engines/yolo26n_int8.engine
+    building INT8 engine (input (1, 3, 640, 640)) — can take several minutes...

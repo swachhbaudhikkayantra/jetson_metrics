@@ -136,12 +136,21 @@ class TRTYOLOEngine(TRTEngineBase):
 
     def __init__(self, engine_path, conf=0.25, iou=0.45):
         super().__init__(engine_path, tag="YOLO TRT")
-        if len(self.output_names) != 1:
-            raise RuntimeError(f"{engine_path}: expected 1 output tensor (detection model), got "
-                               f"{len(self.output_names)} — segmentation/pose engines are not supported.")
         self.conf, self.iou = conf, iou
         self.input_h, self.input_w = self.input_shape[2], self.input_shape[3]
-        self.out_name = self.output_names[0]
+        self.mask_coefs = 0                                 # >0: segmentation engine, box head only is decoded
+        if len(self.output_names) == 1:
+            self.out_name = self.output_names[0]
+        else:
+            # Ultralytics segmentation export: output0 [1, 4+nc+nm, N] (boxes+scores+mask coefs), output1 protos [1, nm, h, w]
+            det = [n for n in self.output_names if len(self.bindings[n]["shape"]) == 3]
+            protos = [n for n in self.output_names if len(self.bindings[n]["shape"]) == 4]
+            if len(self.output_names) != 2 or len(det) != 1 or len(protos) != 1:
+                raise RuntimeError(f"{engine_path}: unsupported outputs "
+                                   f"{[(n, self.bindings[n]['shape']) for n in self.output_names]} — expected a detection "
+                                   f"engine (1 output) or an Ultralytics segmentation engine (box tensor + protos).")
+            self.out_name = det[0]
+            self.mask_coefs = int(self.bindings[protos[0]]["shape"][1])
         out_shape = self.bindings[self.out_name]["shape"]
         self.end2end = is_end2end_shape(out_shape[1:])
         print(f"[YOLO TRT] {engine_path}\n  input={self.input_shape} output={out_shape} "
@@ -152,7 +161,10 @@ class TRTYOLOEngine(TRTEngineBase):
         return yolo_preprocess(img_bgr, self.input_h, self.input_w)
 
     def postprocess(self, outputs, meta, conf=None, iou=None):
-        return decode_yolo(outputs[self.out_name], meta,
+        out = outputs[self.out_name]
+        if self.mask_coefs:                                 # drop the trailing mask-coefficient channels
+            out = out[:, :out.shape[1] - self.mask_coefs, :]
+        return decode_yolo(out, meta,
                            self.conf if conf is None else conf,
                            self.iou if iou is None else iou, end2end=self.end2end)
 

@@ -1,0 +1,230 @@
+[21:08:08] waiting for INT8 build queue + accuracy lane to finish...
+[21:12:38] GPU idle check: GR3D_FREQ 0%
+[21:12:59] benchmark args: --mode headless --source ../dataset/test --val-dir ../dataset/test --val-ann ../dataset/test/_annotations.coco.json --num-frames 500 --warmup 50 --conf 0.25 --iou 0.45 --cooldown 20 --out-dir results_int8 --yolov8-engine engines/best_int8.engine --yolov8-pt ../Models/Yolov8/best.pt --yolo26-engine engines/yolo26n_int8.engine --yolo26-pt ../Models/Yolov11/yolo26n.pt
+======================================================================
+ Jetson Orin Nano — Headless Benchmark (corrected)
+======================================================================
+  Power mode: {'name': 'MAXN_SUPER', 'id': 2}
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+  Ground truth: COCO json ../dataset/test/_annotations.coco.json  images=57  classes=['bottle', 'floor', 'obstacle', 'paper', 'swachh-baudhika-yantra', 'wrapper']  unlabeled=0
+
+────────────────────────────────────────────────────────────
+  Model: yolov8   Engine: engines/best_int8.engine
+────────────────────────────────────────────────────────────
+  Class names: sidecar (engines/best.names.json)  (8 classes)
+[YOLO TRT] engines/best_int8.engine
+  input=(1, 3, 640, 640) output=(1, 12, 8400) head=classic (+NMS)  load=65 ms
+[ImageFolder] 57 images from ../dataset/test
+
+  First-frame (cold) latency: 53.1 ms
+  Warmup: 50 frames...
+  Running 500 frames...
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/spherenex/jetson_metrics/corrected/benchmark.py", line 1398, in <module>
+    main()
+  File "/home/spherenex/jetson_metrics/corrected/benchmark.py", line 1357, in main
+    all_results[name], slog = benchmark_one(name, cfg, args, gt, mode_name, out_dir)
+  File "/home/spherenex/jetson_metrics/corrected/benchmark.py", line 1181, in benchmark_one
+    result["model_info"] = get_model_info(cfg.get("pt"), cfg["engine"])
+  File "/home/spherenex/jetson_metrics/corrected/benchmark.py", line 1147, in get_model_info
+    from ultralytics import YOLO
+  File "/home/spherenex/.local/lib/python3.10/site-packages/ultralytics/__init__.py", line 14, in <module>
+    from ultralytics.utils import ASSETS, SETTINGS
+  File "/home/spherenex/.local/lib/python3.10/site-packages/ultralytics/utils/__init__.py", line 30, in <module>
+    import torch
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/__init__.py", line 2270, in <module>
+    from torch import quantization as quantization  # usort: skip
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/quantization/__init__.py", line 2, in <module>
+    from .fake_quantize import *  # noqa: F403
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/quantization/fake_quantize.py", line 10, in <module>
+    from torch.ao.quantization.fake_quantize import (
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/ao/quantization/__init__.py", line 13, in <module>
+    from .pt2e._numeric_debugger import (  # noqa: F401
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/ao/quantization/pt2e/_numeric_debugger.py", line 9, in <module>
+    from torch.ao.quantization.pt2e.graph_utils import bfs_trace_with_node_process
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/ao/quantization/pt2e/graph_utils.py", line 9, in <module>
+    from torch.export import ExportedProgram
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/export/__init__.py", line 41, in <module>
+    from .decomp_utils import CustomDecompTable
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/export/decomp_utils.py", line 5, in <module>
+    from torch._export.utils import (
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_export/__init__.py", line 48, in <module>
+    from .wrappers import _wrap_submodules
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_export/wrappers.py", line 7, in <module>
+    from torch._higher_order_ops.flat_apply import (
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_higher_order_ops/__init__.py", line 1, in <module>
+    from torch._higher_order_ops._invoke_quant import (
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_higher_order_ops/_invoke_quant.py", line 8, in <module>
+    from torch._higher_order_ops.base_hop import BaseHOP, FunctionWithNoFreeVars
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_higher_order_ops/base_hop.py", line 9, in <module>
+    from torch._higher_order_ops.auto_functionalize import FunctionalCallableWithEpilogue
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_higher_order_ops/auto_functionalize.py", line 13, in <module>
+    from torch._higher_order_ops.utils import (
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_higher_order_ops/utils.py", line 16, in <module>
+    from torch._subclasses.functional_tensor import (
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py", line 46, in <module>
+    class FunctionalTensor(torch.Tensor):
+  File "/home/spherenex/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py", line 279, in FunctionalTensor
+    cpu = _conversion_method_template(device=torch.device("cpu"))
+/home/spherenex/.local/lib/python3.10/site-packages/torch/_subclasses/functional_tensor.py:279: UserWarning: Failed to initialize NumPy: 
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+ (Triggered internally at /opt/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+
+  Accuracy (TensorRT engine)...
+  [yolov8/TRT] scoring on 5 shared class(es): ['bottle', 'floor', 'obstacle', 'paper', 'wrapper']
+  [yolov8/TRT] dataset classes this model cannot predict: ['swachh-baudhika-yantra']
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.33s).
+Accumulating evaluation results...
+DONE (t=0.08s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.611
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.846
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.614
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.138
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.521
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.621
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.394
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.705
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.714
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.385
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.602
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.715
+[ImageFolder] 57 images from ../dataset/test
+
+  PyTorch baseline (0)...
+  [WARN] PyTorch baseline failed: Numpy is not available
+
+  Cooling down 20s ...
+
+────────────────────────────────────────────────────────────
+  Model: yolo26   Engine: engines/yolo26n_int8.engine
+────────────────────────────────────────────────────────────
+  Class names: sidecar (engines/yolo26n.names.json)  (80 classes)
+[YOLO TRT] engines/yolo26n_int8.engine
+  input=(1, 3, 640, 640) output=(1, 84, 8400) head=classic (+NMS)  load=68 ms
+[ImageFolder] 57 images from ../dataset/test
+
+  First-frame (cold) latency: 86.0 ms
+  Warmup: 50 frames...
+  Running 500 frames...
+
+  Accuracy (TensorRT engine)...
+  [yolo26/TRT] scoring on 1 shared class(es): ['bottle']
+  [yolo26/TRT] dataset classes this model cannot predict: ['swachh-baudhika-yantra', 'floor', 'obstacle', 'paper', 'wrapper']
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.02s).
+Accumulating evaluation results...
+DONE (t=0.01s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.303
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.480
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.305
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.323
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.250
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.361
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.375
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.375
+[ImageFolder] 57 images from ../dataset/test
+
+  PyTorch baseline (0)...
+  [WARN] PyTorch baseline failed: Numpy is not available
+
+  Results saved: results_int8/results.json, results_int8/results.csv, results_int8/summary.md
+
+================================================================================
+ BENCHMARK COMPARISON
+================================================================================
++--------------------------------+----------+----------+
+| Metric                         | yolov8   | yolo26   |
++================================+==========+==========+
+| Infer Latency (ms)             | 8.55     | 11.74    |
++--------------------------------+----------+----------+
+| Pipeline Latency (ms)          | 18.82    | 23.07    |
++--------------------------------+----------+----------+
+| E2E Latency incl. capture (ms) | 21.66    | 25.97    |
++--------------------------------+----------+----------+
+| Infer FPS                      | 117.0    | 85.2     |
++--------------------------------+----------+----------+
+| Pipeline FPS                   | 53.1     | 43.4     |
++--------------------------------+----------+----------+
+| E2E FPS incl. capture          | 46.2     | 38.5     |
++--------------------------------+----------+----------+
+| P99 Total Latency (ms)         | 24.26    | 39.08    |
++--------------------------------+----------+----------+
+| First Frame (ms)               | 53.1     | 86.0     |
++--------------------------------+----------+----------+
+| Jitter Std (ms)                | 1.12     | 4.00     |
++--------------------------------+----------+----------+
+| Stutter Count                  | 0        | 0        |
++--------------------------------+----------+----------+
+| mAP@0.5 (TRT)                  | 0.846    | 0.480    |
++--------------------------------+----------+----------+
+| mAP@0.5:0.95 (TRT)             | 0.611    | 0.303    |
++--------------------------------+----------+----------+
+| mAP@0.5 (PyTorch)              | n/a      | n/a      |
++--------------------------------+----------+----------+
+| Precision @conf                | 0.794    | 1.000    |
++--------------------------------+----------+----------+
+| Recall @conf                   | 0.767    | 0.357    |
++--------------------------------+----------+----------+
+| GPU Util %                     | 40.1     | 53.5     |
++--------------------------------+----------+----------+
+| Power Avg (W, board)           | 9.05     | 9.26     |
++--------------------------------+----------+----------+
+| FPS/W (wall-clock)             | 5.10     | 4.16     |
++--------------------------------+----------+----------+
+| Energy / frame (mJ)            | 196.2    | 240.7    |
++--------------------------------+----------+----------+
+| Temp GPU Max (C)               | 62.8     | 62.8     |
++--------------------------------+----------+----------+
+| PT/TRT speedup (infer)         | n/a      | n/a      |
++--------------------------------+----------+----------+
+| PT/TRT speedup (e2e)           | n/a      | n/a      |
++--------------------------------+----------+----------+
+| Engine Size (MB)               | 4.6      | 5.4      |
++--------------------------------+----------+----------+
+| Engine Load (ms)               | 65       | 68       |
++--------------------------------+----------+----------+
+
+/home/spherenex/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+  Plots saved to results_int8/
+
+  Done.
+benchmark exit=0
+copied -> /home/spherenex/jetson_metrics/results.csv
+BENCH_INT8_DONE

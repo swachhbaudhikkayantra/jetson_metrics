@@ -1,0 +1,12 @@
+[
+  {
+    "name": "yolo26n",
+    "source": "/home/spherenex/jetson_metrics/corrected/engines/yolo26n.onnx",
+    "onnx": "/home/spherenex/jetson_metrics/corrected/engines/yolo26n.onnx",
+    "onnx_mb": 9.470276832580566,
+    "kind": "yolo",
+    "engine_int8": "/home/spherenex/jetson_metrics/corrected/engines/yolo26n_int8.engine",
+    "engine_int8_mb": 5.415622711181641,
+    "build_time_int8": 917.4382104873657
+  }
+]

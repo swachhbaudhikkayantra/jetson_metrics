@@ -1,0 +1,47 @@
+Storing system configuration in /root/.jetsonclocks_conf.txt
+[clocks] settings stored
+[clocks] locked at max
+[clocks] cpu0:  Online=1 Governor=schedutil MinFreq=1728000 MaxFreq=1728000 CurrentFreq=1728000 IdleStates: WFI=0 c7=0  GPU MinFreq=1020000000 MaxFreq=1020000000 CurrentFreq=1020000000 
+[cron] status cron paused
+YOLOv8n FP16  repeat 1/3
+   e2e 16.10 ms  gpu 4.09 ms  FPS 62.1  13.02 W
+YOLOv8n FP16  repeat 2/3
+   e2e 12.21 ms  gpu 4.01 ms  FPS 81.9  12.58 W
+YOLOv8n FP16  repeat 3/3
+   e2e 11.74 ms  gpu 3.83 ms  FPS 85.2  12.38 W
+YOLOv8n INT8  repeat 1/3
+   e2e 15.18 ms  gpu 3.32 ms  FPS 65.9  12.02 W
+YOLOv8n INT8  repeat 2/3
+   e2e 15.01 ms  gpu 3.34 ms  FPS 66.6  11.92 W
+YOLOv8n INT8  repeat 3/3
+   e2e 14.75 ms  gpu 3.23 ms  FPS 67.8  11.41 W
+YOLOv11n-seg (box head) FP16  repeat 1/3
+   e2e 12.33 ms  gpu 4.96 ms  FPS 81.1  12.48 W
+YOLOv11n-seg (box head) FP16  repeat 2/3
+   e2e 12.76 ms  gpu 4.95 ms  FPS 78.4  13.28 W
+YOLOv11n-seg (box head) FP16  repeat 3/3
+   e2e 12.74 ms  gpu 5.05 ms  FPS 78.5  12.95 W
+YOLO26n (COCO, reference) FP16  repeat 1/3
+   e2e 13.02 ms  gpu 4.66 ms  FPS 76.8  12.45 W
+YOLO26n (COCO, reference) FP16  repeat 2/3
+   e2e 12.95 ms  gpu 4.67 ms  FPS 77.2  12.54 W
+YOLO26n (COCO, reference) FP16  repeat 3/3
+   e2e 13.59 ms  gpu 4.76 ms  FPS 73.6  13.07 W
+YOLO26n (COCO, reference) INT8  repeat 1/3
+   e2e 16.94 ms  gpu 4.09 ms  FPS 59.0  11.87 W
+YOLO26n (COCO, reference) INT8  repeat 2/3
+   e2e 17.02 ms  gpu 4.30 ms  FPS 58.8  11.65 W
+YOLO26n (COCO, reference) INT8  repeat 3/3
+   e2e 17.00 ms  gpu 4.21 ms  FPS 58.8  11.55 W
+RF-DETR Medium FP16  repeat 1/3
+   e2e 23.24 ms  gpu 13.15 ms  FPS 43.0  14.65 W
+RF-DETR Medium FP16  repeat 2/3
+   e2e 23.07 ms  gpu 12.78 ms  FPS 43.4  14.78 W
+RF-DETR Medium FP16  repeat 3/3
+   e2e 26.38 ms  gpu 16.50 ms  FPS 37.9  15.11 W
+
+Wrote /home/spherenex/jetson_metrics/results_paper_latency_locked_clocks.csv
+LOCKED_LATENCY_DONE
+[restore] 22:33:09 restoring clocks + status cron
+/tmp/claude-1000/-home-spherenex-jetson-metrics/b1518064-8475-409f-b698-4a6e0e44eb5f/scratchpad/cro: No such file or directory
+[restore] power mode: NV Power Mode: MAXN_SUPER | cron entries: 0

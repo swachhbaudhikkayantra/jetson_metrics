@@ -1,0 +1,10 @@
+{
+  "name": "yolo11seg",
+  "source": "/tmp/claude-1000/-home-spherenex-jetson-metrics/b1518064-8475-409f-b698-4a6e0e44eb5f/scratchpad/models_zip/models/yolov11/best_fp32.onnx",
+  "onnx": "/home/spherenex/jetson_metrics/corrected/engines/yolo11seg.onnx",
+  "onnx_mb": 11.062763214111328,
+  "kind": "yolo",
+  "engine_fp16": "/home/spherenex/jetson_metrics/corrected/engines/yolo11seg_fp16.engine",
+  "engine_fp16_mb": 8.516124725341797,
+  "build_time_fp16": 458.417427778244
+}

@@ -1,0 +1,65 @@
+[10/30/2026-20:00:27] [TRT] [E] ITensor::getDimensions: Error Code 4: Internal Error (/transformer/ScatterND: an IScatterLayer cannot be used to compute a shape tensor)
+[10/30/2026-20:00:27] [TRT] [E] ModelImporter.cpp:948: While parsing node number 1297 [Slice -> "/transformer/decoder/layers.0/cross_attn/Slice_2_output_0"]:
+[10/30/2026-20:00:27] [TRT] [E] ModelImporter.cpp:950: --- Begin node ---
+input: "/transformer/decoder/layers.0/cross_attn/Reshape_2_output_0"
+input: "/transformer/decoder/layers.0/cross_attn/Constant_21_output_0"
+input: "/transformer/decoder/layers.0/cross_attn/Add_1_output_0"
+input: "/transformer/decoder/layers.0/cross_attn/Constant_22_output_0"
+output: "/transformer/decoder/layers.0/cross_attn/Slice_2_output_0"
+name: "/transformer/decoder/layers.0/cross_attn/Slice_2"
+op_type: "Slice"
+
+[10/30/2026-20:00:27] [TRT] [E] ModelImporter.cpp:951: --- End node ---
+[10/30/2026-20:00:27] [TRT] [E] ModelImporter.cpp:953: ERROR: ModelImporter.cpp:195 In function parseNode:
+[6] Invalid Node - /transformer/decoder/layers.0/cross_attn/Slice_2
+ITensor::getDimensions: Error Code 4: Internal Error (/transformer/ScatterND: an IScatterLayer cannot be used to compute a shape tensor)
+
+============================================================
+ yolov8: engines/best.onnx
+============================================================
+    8 class names saved -> best.names.json
+
+  [best] FP16 -> engines/best_fp16.engine
+    building FP16 engine (input (1, 3, 640, 640)) — can take several minutes...
+      IN  images: (1, 3, 640, 640) DataType.FLOAT
+      OUT output0: (1, 12, 8400) DataType.FLOAT
+    done in 359s (8.7 MB)
+
+============================================================
+ yolo26: engines/yolo26n.onnx
+============================================================
+    80 class names saved -> yolo26n.names.json
+
+  [yolo26n] FP16 -> engines/yolo26n_fp16.engine
+    building FP16 engine (input (1, 3, 640, 640)) — can take several minutes...
+      IN  images: (1, 3, 640, 640) DataType.FLOAT
+      OUT output0: (1, 84, 8400) DataType.FLOAT
+    done in 385s (8.1 MB)
+
+============================================================
+ RF-DETR: ../Models/Rfdetr/Copy of rfdetr_fp32.onnx
+============================================================
+    [WARN] --rfdetr-names not given: RF-DETR detections will show raw class indices and its accuracy cannot be scored. The ONNX has 10 logits per query; supply a list of 10 names indexed by output index (including the unused/dummy slot).
+
+  [rfdetr] FP16 -> engines/rfdetr_fp16.engine
+    [ERROR] fp16 build failed: ONNX parse failed for engines/rfdetr.onnx:
+In node 1297 with name: /transformer/decoder/layers.0/cross_attn/Slice_2 and operator: Slice (parseNode): INVALID_NODE: Invalid Node - /transformer/decoder/layers.0/cross_attn/Slice_2
+ITensor::getDimensions: Error Code 4: Internal Error (/transformer/ScatterND: an IScatterLayer cannot be used to compute a shape tensor)
+
+============================================================
+ Export Summary
+============================================================
+
+  best (yolov8)
+    fp16 :     8.7 MB  build=359s  [engines/best_fp16.engine]
+
+  yolo26n (yolo26)
+    fp16 :     8.1 MB  build=385s  [engines/yolo26n_fp16.engine]
+
+  rfdetr (rfdetr)
+    fp16 : NOT BUILT (ONNX parse failed for engines/rfdetr.onnx:
+In node 1297 with name: /transformer/decoder/layers.0/cross_attn/Slice_2 and operator: Slice (parseNode): INVALID_NODE: Invalid Node - /transformer/decoder/layers.0/cross_attn/Slice_2
+ITensor::getDimensions: Error Code 4: Internal Error (/transformer/ScatterND: an IScatterLayer cannot be used to compute a shape tensor))
+
+  Metadata saved: engines/export_meta.json
+exit=1

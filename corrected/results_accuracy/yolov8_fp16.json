@@ -1,0 +1,109 @@
+{
+  "class_mapping": {
+    "matched": {
+      "bottle": "bottle",
+      "floor": "floor",
+      "obstacle": "obstacle",
+      "paper": "paper",
+      "wrapper": "wrapper"
+    },
+    "model_classes_without_gt": [
+      "aluminium_foil",
+      "cement_dust",
+      "wooden_dust"
+    ],
+    "gt_classes_not_predictable": [
+      "swachh-baudhika-yantra"
+    ]
+  },
+  "images_evaluated": 57,
+  "eval_classes": [
+    "bottle",
+    "floor",
+    "obstacle",
+    "paper",
+    "wrapper"
+  ],
+  "avg_dets_per_img_at_conf": 7.87719298245614,
+  "total_dets_scored": 2342,
+  "mAP50_95": 0.6266273805192774,
+  "mAP50": 0.8347345261432956,
+  "mAP75": 0.6277186265602713,
+  "mAP_small": 0.1664926492649265,
+  "mAP_medium": 0.5361460617921224,
+  "mAP_large": 0.6334301039133118,
+  "AR_1": 0.3895801595664609,
+  "AR_10": 0.7207250740127453,
+  "AR_100": 0.7296748457022432,
+  "per_class": {
+    "bottle": {
+      "AP50_95": 0.7590568133254428,
+      "AP50": 0.9603960396039604
+    },
+    "floor": {
+      "AP50_95": 0.4330550155025603,
+      "AP50": 0.769748397938906
+    },
+    "obstacle": {
+      "AP50_95": 0.5068711421436317,
+      "AP50": 0.6827483102854921
+    },
+    "paper": {
+      "AP50_95": 0.7148442724042214,
+      "AP50": 0.8783914064252659
+    },
+    "wrapper": {
+      "AP50_95": 0.7193096592205303,
+      "AP50": 0.8823884764628538
+    }
+  },
+  "precision_at_conf": 0.7375565610859729,
+  "recall_at_conf": 0.7817745803357314,
+  "f1_at_conf": 0.7590221187427242,
+  "tp": 326,
+  "fp": 116,
+  "fn": 91,
+  "conf_thresh_used": 0.25,
+  "per_class_prf": {
+    "bottle": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9642857142857143,
+      "f1": 0.9642857142857143,
+      "tp": 27,
+      "fp": 1,
+      "fn": 1
+    },
+    "floor": {
+      "precision": 0.7727272727272727,
+      "recall": 0.7846153846153846,
+      "f1": 0.7786259541984732,
+      "tp": 51,
+      "fp": 15,
+      "fn": 14
+    },
+    "obstacle": {
+      "precision": 0.6446280991735537,
+      "recall": 0.7123287671232876,
+      "f1": 0.6767895878524947,
+      "tp": 156,
+      "fp": 86,
+      "fn": 63
+    },
+    "paper": {
+      "precision": 0.8472222222222222,
+      "recall": 0.8714285714285714,
+      "f1": 0.8591549295774648,
+      "tp": 61,
+      "fp": 11,
+      "fn": 9
+    },
+    "wrapper": {
+      "precision": 0.9117647058823529,
+      "recall": 0.8857142857142857,
+      "f1": 0.8985507246376812,
+      "tp": 31,
+      "fp": 3,
+      "fn": 4
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+  [yolo11seg] FP16 -> /home/spherenex/jetson_metrics/corrected/engines/yolo11seg_fp16.engine
+    building FP16 engine (input (1, 3, 576, 576)) — can take several minutes...
+      IN  images: (1, 3, 576, 576) DataType.FLOAT
+      OUT output0: (1, 44, 6804) DataType.FLOAT
+      OUT output1: (1, 32, 144, 144) DataType.FLOAT
+    done in 458s (8.5 MB)
+RESULT fp16 8.5 MB 458s
+[fp16] exit=0
+
+  [yolo11seg] INT8 -> /home/spherenex/jetson_metrics/corrected/engines/yolo11seg_int8.engine
+    building INT8 engine (input (1, 3, 576, 576)) — can take several minutes...
+[10/30/2026-21:49:43] [TRT] [E] IBuilder::buildSerializedNetwork: Error Code 10: Internal Error (Could not find any implementation for node /model.23/proto/cv3/conv/Conv + PWN(PWN(/model.23/proto/cv3/act/Sigmoid), PWN(/model.23/proto/cv3/act/Mul)).)
+    [ERROR] int8 build failed: TensorRT engine build failed (see log above)
+RESULT int8 FAILED: TensorRT engine build failed (see log above)
+[int8] exit=0
