@@ -1,0 +1,106 @@
+\begin{table}[t]
+\centering
+\caption{Model configuration and footprint of the TensorRT engines built on the Jetson Orin Nano. FP16 is the unquantised baseline; INT8 engines were calibrated with 200 real frames (113 from the validation split and 87 from the training split; no labels were used). $^{\dagger}$INT8 engine build failed on TensorRT 10.3 (see text). Parameters are counted from the exported ONNX weights and may differ slightly from the training checkpoints.}
+\label{tab:edge-config}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+ & YOLOv8n & YOLOv11n-seg & RF-DETR Medium \\
+\midrule
+Input size (px) & 640${\times}$640 & 576${\times}$576 & 448${\times}$448 \\
+Parameters (M) & 3.05 & 2.87 & 29.85 \\
+Engine size, FP16 (MB) & 8.69 & 8.52 & 60.48 \\
+Engine size, INT8 (MB) & 4.60 & --$^{\dagger}$ & --$^{\dagger}$ \\
+Size reduction FP16$\rightarrow$INT8 & 47\% & --$^{\dagger}$ & --$^{\dagger}$ \\
+Runtime / format & TensorRT 10.3 engine & TensorRT 10.3 engine & TensorRT 10.3 engine \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Detection accuracy of the TensorRT engines on the validation set (175 images, 8 classes, original $1280{\times}720$ frames). Precision, recall and F1 are at a confidence threshold of 0.25; mAP uses a 0.001 threshold. YOLO models use NMS with IoU 0.7; RF-DETR uses set prediction (no NMS). YOLOv11n-seg is evaluated on its box head only. The INT8 calibration frames overlap the validation split (Table~\ref{tab:edge-config}), so the test-split comparison in Table~\ref{tab:per_class_int8} is the overlap-free one. $^{\dagger}$INT8 engine build failed on TensorRT 10.3.}
+\label{tab:edge-acc}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+Model & Precision & Prec. & Rec. & F1 & mAP@0.5 & mAP@0.75 & mAP@0.5:0.95 \\
+\midrule
+YOLOv8n & FP16 & 0.7692 & 0.8280 & 0.7975 & 0.8765 & 0.7933 & 0.7430 \\
+YOLOv8n & INT8 & 0.7957 & 0.8083 & 0.8020 & 0.8786 & 0.7866 & 0.7287 \\
+YOLOv11n-seg & FP16 & 0.7373 & 0.8356 & 0.7834 & 0.8895 & 0.7952 & 0.7495 \\
+YOLOv11n-seg & INT8$^{\dagger}$ & -- & -- & -- & -- & -- & -- \\
+RF-DETR Medium & FP16 & 0.7532 & 0.9227 & 0.8294 & 0.9323 & 0.8818 & 0.8436 \\
+RF-DETR Medium & INT8$^{\dagger}$ & -- & -- & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table*}[t]
+\centering
+\caption{Runtime and resource usage on the Jetson Orin Nano Developer Kit (Super), JetPack 6.2.1 (L4T R36.4.4), TensorRT 10.3, MAXN\_SUPER power mode with clocks locked (\texttt{jetson\_clocks}). Each engine: 10 discarded warm-up passes and 100 timed passes per run; values are the mean of 3 runs (GPU and end-to-end latency also show the standard deviation across the 3 runs). GPU time is measured with CUDA events; end-to-end latency includes CPU pre- and post-processing (YOLO NMS at IoU 0.45) and host--device transfers of a $1280{\times}720$ frame, excluding image decoding. Throughput rows are the mean of the per-run FPS. End-to-end latency is dominated by CPU pre-processing and varies between runs (see $\pm$), so GPU time is the model-level metric. Power is the module input rail (\texttt{tegrastats} VDD\_IN); RAM is the process peak resident memory. YOLOv11n-seg is evaluated on its box head only. $^{\dagger}$INT8 engine build failed on TensorRT 10.3.}
+\label{tab:edge-runtime}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{YOLOv8n} & \multicolumn{2}{c}{YOLOv11n-seg} & \multicolumn{2}{c}{RF-DETR Medium} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+ & FP16 & INT8 & FP16 & INT8 & FP16 & INT8 \\
+\midrule
+GPU inference time (ms) & 3.98 $\pm$ 0.13 & 3.30 $\pm$ 0.06 & 4.99 $\pm$ 0.05 & --$^{\dagger}$ & 14.14 $\pm$ 2.05 & --$^{\dagger}$ \\
+GPU-only throughput (FPS) & 252 & 303 & 201 & --$^{\dagger}$ & 72 & --$^{\dagger}$ \\
+End-to-end latency (ms) & 13.35 $\pm$ 2.39 & 14.98 $\pm$ 0.22 & 12.61 $\pm$ 0.24 & --$^{\dagger}$ & 24.23 $\pm$ 1.87 & --$^{\dagger}$ \\
+End-to-end throughput (FPS) & 76.4 & 66.8 & 79.3 & --$^{\dagger}$ & 41.4 & --$^{\dagger}$ \\
+Board power (W) & 12.66 & 11.78 & 12.90 & --$^{\dagger}$ & 14.85 & --$^{\dagger}$ \\
+Energy efficiency (FPS/W) & 6.05 & 5.67 & 6.15 & --$^{\dagger}$ & 2.79 & --$^{\dagger}$ \\
+Peak RAM (MB) & 244 & 246 & 341 & --$^{\dagger}$ & 323 & --$^{\dagger}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Per-class detection performance of the FP16 TensorRT engines on the test set (87 images, 8 classes). Precision, recall and F1 at a confidence threshold of 0.25; AP is AP@0.5 (\%). YOLOv11n-seg: box head only.}
+\label{tab:per_class_fp16}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccccccccc}
+\toprule
+& \multicolumn{4}{c}{\textbf{YOLOv8n}} & \multicolumn{4}{c}{\textbf{YOLOv11n-seg}} & \multicolumn{4}{c}{\textbf{RF-DETR Medium}} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}\cmidrule(lr){10-13}
+\textbf{Class} & \textbf{Prec.} & \textbf{Rec.} & \textbf{F1} & \textbf{AP} & \textbf{Prec.} & \textbf{Rec.} & \textbf{F1} & \textbf{AP} & \textbf{Prec.} & \textbf{Rec.} & \textbf{F1} & \textbf{AP} \\
+\midrule
+aluminium\_foil & 96.15 & 100.00 & 98.04 & 100.00 & 92.59 & 100.00 & 96.15 & 99.70 & 96.15 & 100.00 & 98.04 & 100.00 \\
+bottle & 100.00 & 93.55 & 96.67 & 93.07 & 96.77 & 96.77 & 96.77 & 98.55 & 100.00 & 100.00 & 100.00 & 100.00 \\
+cement\_dust & 90.91 & 76.92 & 83.33 & 89.26 & 78.57 & 84.62 & 81.48 & 85.59 & 64.71 & 84.62 & 73.33 & 85.48 \\
+floor & 85.57 & 86.46 & 86.01 & 82.20 & 88.54 & 88.54 & 88.54 & 89.87 & 89.69 & 90.62 & 90.16 & 92.16 \\
+obstacle & 67.21 & 75.26 & 71.01 & 68.37 & 62.21 & 76.30 & 68.54 & 68.06 & 70.99 & 89.84 & 79.31 & 87.69 \\
+paper & 94.44 & 90.67 & 92.52 & 89.78 & 90.54 & 89.33 & 89.93 & 89.05 & 86.42 & 93.33 & 89.74 & 92.29 \\
+wooden\_dust & 75.00 & 93.75 & 83.33 & 91.56 & 86.67 & 81.25 & 83.87 & 80.56 & 66.67 & 100.00 & 80.00 & 98.11 \\
+wrapper & 90.00 & 94.74 & 92.31 & 95.39 & 83.33 & 92.11 & 87.50 & 94.41 & 90.48 & 100.00 & 95.00 & 99.06 \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\caption{Effect of INT8 quantisation on YOLOv8n per class (test set, 87 images). F1 at a confidence threshold of 0.25; AP is AP@0.5 (\%). $\Delta$AP = INT8 $-$ FP16 in percentage points.}
+\label{tab:per_class_int8}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+ & \multicolumn{2}{c}{FP16} & \multicolumn{2}{c}{INT8} & \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Class & F1 & AP & F1 & AP & $\Delta$AP \\
+\midrule
+aluminium\_foil & 98.04 & 100.00 & 94.12 & 99.13 & -0.87 \\
+bottle & 96.67 & 93.07 & 96.67 & 93.07 & +0.00 \\
+cement\_dust & 83.33 & 89.26 & 75.00 & 88.21 & -1.05 \\
+floor & 86.01 & 82.20 & 87.50 & 87.10 & +4.90 \\
+obstacle & 71.01 & 68.37 & 70.59 & 67.48 & -0.89 \\
+paper & 92.52 & 89.78 & 93.24 & 90.41 & +0.63 \\
+wooden\_dust & 83.33 & 91.56 & 90.91 & 89.06 & -2.50 \\
+wrapper & 92.31 & 95.39 & 93.33 & 95.16 & -0.23 \\
+\bottomrule
+\end{tabular}
+\end{table}
